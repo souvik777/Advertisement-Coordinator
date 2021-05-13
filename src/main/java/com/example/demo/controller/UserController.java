@@ -36,7 +36,13 @@ public class UserController {
 	@GetMapping("/users")
 	public List<User> getAllUsers(){
 		return userRepository.findAll();
-	}		
+	}
+
+
+	@GetMapping("/companyname")
+	public List<String> findDistinctCompanyName(){
+		return userRepository.findDistinctCompanyName();
+	}
 	
 	@PostMapping("/users")
 	public User createUser(@RequestBody User user) {

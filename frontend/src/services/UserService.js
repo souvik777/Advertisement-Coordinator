@@ -109,10 +109,59 @@ class UserService {
 
         //const response = await axios.get(USER_API_BASE_URL+"/"+id);
         console.log("1")
-        console.log(response)
+        console.log(xhr.responseText)
         console.log("2")
         //let list = response.data;
         return response;
+    }
+
+
+    getCompanyNames = async () => {
+
+        //let id = sessionStorage.getItem("id");
+        const USER_API_BASE_URL = "http://localhost:8084/api/v1/companyname";
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", USER_API_BASE_URL+ '/' , false);
+        //xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send();
+
+
+        let response=(xhr.responseText);
+/*
+        console.log("ad1")
+        //console.log(Object.values(response))
+        console.log((response))
+        console.log("ad2")
+
+        let l=response.length
+        response=response.substring(1,l-1)
+        response=response.replaceAll('"','')
+        console.log(response)
+
+
+        response=response.split(',')
+        //const response = await axios.get(USER_API_BASE_URL+"/"+id);
+        console.log("ad1")
+        //console.log(Object.values(response))
+        console.log((response))
+        console.log(response.length)
+
+
+        let countries1=[];
+        for(let i=0;i<response.length;i++)
+        {
+            console.log(response[i]);
+            countries1[i]={
+                id:i,name:response[i]
+            }
+        }
+
+*/
+
+        console.log(JSON.parse(response))
+        //let list = response.data;
+        return (JSON.parse(response));
     }
 }
 
